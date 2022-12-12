@@ -53,7 +53,8 @@ https://academy.especializati.com.br/curso/laravel-eloquent
 
 ## <a name="parte2">2 - 01 - O que é o Eloquent ORM do Laravel</a>
 
-
+- https://laravel.com/docs/8.x/eloquent
+- https://laravel.com/docs/9.x/eloquent
 
 [Voltar ao Índice](#indice)
 
