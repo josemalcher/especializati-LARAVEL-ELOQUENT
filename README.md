@@ -215,7 +215,7 @@ Using version ^3.7 for barryvdh/laravel-debugbar
 
 ## <a name="parte10">10 - 03 - Opções de Colunas de Migrations no Laravel</a>
 
-
+- https://laravel.com/docs/9.x/migrations#available-column-types
 
 [Voltar ao Índice](#indice)
 
@@ -224,7 +224,46 @@ Using version ^3.7 for barryvdh/laravel-debugbar
 
 ## <a name="parte11">11 - 04 - Chave Estrangeira no Laravel</a>
 
+```
+$ php artisan make:model Post -m
 
+   INFO  Model [C:\Users\josem\Documents\workspaces\especializati-LARAVEL-ELOQUENT\cursoeloquent9\app/Models/Post.php] created successfully.
+
+   INFO  Migration [C:\Users\josem\Documents\workspaces\especializati-LARAVEL-ELOQUENT\cursoeloquent9\database\migrations/2022_12_13_173226_create_posts_table.php] created successfully.  
+
+
+```
+
+- cursoeloquent9/database/migrations/2022_12_13_173226_create_posts_table.php
+
+```php
+public function up()
+    {
+        Schema::create('posts', function (Blueprint $table) {
+            $table->id();
+
+            $table->foreignId('user_id')->constrained('users');
+
+            $table->string('title')->unique();
+            $table->text('body');
+
+            $table->timestamps();
+
+            // $table->unsignedBigInteger('user_id');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+        });
+    }
+```
+
+```
+$ php artisan migrate
+
+   INFO  Running migrations.
+
+  2022_12_13_173226_create_posts_table ........................... 63ms DONE
+
+```
 
 [Voltar ao Índice](#indice)
 
