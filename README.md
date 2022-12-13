@@ -81,7 +81,14 @@ https://academy.especializati.com.br/curso/laravel-eloquent
 
 ## <a name="parte5">5 - 04 - Models e Migrations no Laravel</a>
 
+```
+$ php artisan make:model Post -m
 
+   INFO  Model [C:\Users\josem\Documents\workspaces\especializati-LARAVEL-ELOQUENT\cursoeloquent9\app/Models/Post.php] created successfully.
+
+   INFO  Migration [C:\Users\josem\Documents\workspaces\especializati-LARAVEL-ELOQUENT\cursoeloquent9\database\migrations/2022_12_13_120401_create_posts_table.php] created successfully.  
+
+```
 
 [Voltar ao Índice](#indice)
 
