@@ -272,7 +272,36 @@ $ php artisan migrate
 
 ## <a name="parte12">12 - 05 - Laravel - Criar Colunas Novas em Tabelas Sem Perder os Dados</a>
 
+```
+$ composer require doctrine/dbal
+Info from https://repo.packagist.org: #StandWithUkraine
+Using version ^3.5 for doctrine/dbal
+```
 
+```
+$ php artisan make:migration add_collumn_date_users
+
+   INFO  Migration [2022_12_13_180134_add_collumn_date_users] created successfully.
+```
+
+- cursoeloquent9\database\migrations\2022_12_13_180134_add_collumn_date_users.php
+
+```php
+ public function up()
+    {
+        Schema::table('posts', function (Blueprint $table) {
+            $table->date('date')->after('body');
+        });
+    }
+```
+
+```
+$ php artisan migrate
+
+   INFO  Running migrations.
+
+  2022_12_13_180134_add_collumn_date_users ..................................... 278ms DONE
+```
 
 [Voltar ao Índice](#indice)
 
