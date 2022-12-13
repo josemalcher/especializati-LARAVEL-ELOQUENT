@@ -116,6 +116,9 @@
       <excludeFolder url="file://$MODULE_DIR$/cursoeloquent9/vendor/symfony/polyfill-mbstring" />
       <excludeFolder url="file://$MODULE_DIR$/cursoeloquent9/vendor/symfony/polyfill-php72" />
       <excludeFolder url="file://$MODULE_DIR$/cursoeloquent9/vendor/symfony/polyfill-php80" />
+      <excludeFolder url="file://$MODULE_DIR$/cursoeloquent9/vendor/laravel/telescope" />
+      <excludeFolder url="file://$MODULE_DIR$/cursoeloquent9/vendor/maximebf/debugbar" />
+      <excludeFolder url="file://$MODULE_DIR$/cursoeloquent9/vendor/barryvdh/laravel-debugbar" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

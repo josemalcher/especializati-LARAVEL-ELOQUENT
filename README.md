@@ -180,7 +180,33 @@ $ php artisan migrate:fresh
 
 ## <a name="parte9">9 - 02 - Instalar o Telescope e o DebugBar</a>
 
+- https://laravel.com/docs/8.x/telescope
+- https://github.com/barryvdh/laravel-debugbar
 
+```
+$ composer require laravel/telescope
+Info from https://repo.packagist.org: #StandWithUkraine
+Using version ^4.10 for laravel/telescope
+
+
+$ php artisan telescope:install
+Publishing Telescope Service Provider...
+Publishing Telescope Assets...
+Publishing Telescope Configuration...
+Telescope scaffolding installed successfully.
+
+
+$ php artisan migrate
+
+   INFO  Running migrations.
+
+  2018_08_08_100000_create_telescope_entries_table ...................................................................................... 204ms DONE
+
+
+$ composer require barryvdh/laravel-debugbar --dev
+Using version ^3.7 for barryvdh/laravel-debugbar
+
+```
 
 [Voltar ao Índice](#indice)
 
