@@ -97,7 +97,7 @@ $ php artisan make:model Post -m
 
 ## <a name="parte6">6 - 05 - Conexão Banco de Dados no Laravel</a>
 
-
+- cursoeloquent9/config/database.php
 
 [Voltar ao Índice](#indice)
 
@@ -115,7 +115,63 @@ $ php artisan make:model Post -m
 
 ## <a name="parte8">8 - 01 - Comandos de Migration no Laravel e MySql Workbench</a>
 
+```
+migrate
+  migrate:fresh          Drop all tables and re-run all migrations
+  migrate:install        Create the migration repository
+  migrate:refresh        Reset and re-run all migrations
+  migrate:reset          Rollback all database migrations
+  migrate:rollback       Rollback the last database migration
+  migrate:status         Show the status of each migration
 
+
+$ php artisan migrate
+
+   INFO  Preparing database.
+
+  Creating migration table .............................................38ms DONE
+
+   INFO  Running migrations.  
+
+  2014_10_12_000000_create_users_table .................................32ms DONE
+  2014_10_12_100000_create_password_resets_table .......................25ms DONE
+  2019_08_19_000000_create_failed_jobs_table ...........................28ms DONE
+  2019_12_14_000001_create_personal_access_tokens_table ................41ms DONE
+
+$ php artisan migrate
+
+   INFO  Nothing to migrate.
+
+$ php artisan migrate
+  2019_08_19_000000_create_failed_jobs_table ............................ 8ms DONE
+  2014_10_12_100000_create_password_resets_table ........................ 10ms DONE
+  2014_10_12_000000_create_users_table .................................. 8ms DONE
+
+   INFO  Running migrations.
+
+  2014_10_12_000000_create_users_table .................................. 38ms DONE
+  2014_10_12_100000_create_password_resets_table ........................ 33ms DONE
+  2019_08_19_000000_create_failed_jobs_table ............................ 30ms DONE
+  2019_12_14_000001_create_personal_access_tokens_table ................. 43ms DONE
+
+
+$ php artisan migrate:fresh
+
+  Dropping all tables ......................................... 48ms DONE
+
+   INFO  Preparing database.  
+
+  Creating migration table ................................... 14ms DONE
+
+   INFO  Running migrations.  
+
+  2014_10_12_000000_create_users_table ........................ 25ms DONE
+  2014_10_12_100000_create_password_resets_table .............. 25ms DONE
+  2019_08_19_000000_create_failed_jobs_table .................. 26ms DONE
+  2019_12_14_000001_create_personal_access_tokens_table ....... 36ms DONE
+
+
+```
 
 [Voltar ao Índice](#indice)
 
