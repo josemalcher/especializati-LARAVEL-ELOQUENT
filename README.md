@@ -543,7 +543,39 @@ Route::get('/delete', function () {
 
 ## <a name="parte23">23 - 10 - Laravel Eloquent - Soft Deleting</a>
 
+```
+$ php artisan make:migration add_collumn_deleted_at_posts
 
+   INFO  Migration [2022_12_16_140740_add_collumn_deleted_at_posts] created succ
+                                                                               cessfully.
+```
+
+```php
+    public function up()
+    {
+        Schema::table('posts', function (Blueprint $table) {
+            $table->softDeletes();
+        });
+    }
+```
+
+```php
+class Post extends Model
+{
+    use HasFactory, SoftDeletes;
+```
+
+```php
+Route::get('/delete2', function () {
+
+    Post::destroy(5);
+
+    $posts = Post::get();
+
+    return $posts;
+
+});
+```
 
 [Voltar ao Índice](#indice)
 

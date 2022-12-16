@@ -126,3 +126,13 @@ Route::get('/delete', function () {
     dd($post->delete());
 
 });
+
+Route::get('/delete2', function () {
+
+    Post::destroy(5);
+
+    $posts = Post::get();
+
+    return $posts;
+
+});
