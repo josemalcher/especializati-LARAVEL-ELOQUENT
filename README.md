@@ -943,7 +943,54 @@ Route::get('/observer', function () {
 
 ## <a name="parte33">33 - 05 - Laravel Eloquent - Eventos</a>
 
+```
+$ php artisan make:event PostCreated
 
+   INFO  Event [C:\Users\josem\Documents\workspaces\especializati-LARAVEL-ELOQUENT\cursoeloquent9\app/Events/PostCreated.php] created successfully.
+```
+
+```php
+class Post extends Model
+{
+    protected $dispatchesEvents = [
+        'created' => PostCreated::class,
+    ];
+```
+
+
+```
+$ php artisan make:listener NotifyNewPostCreated
+
+   INFO  Listener [C:\Users\josem\Documents\workspaces\especializati-LARAVEL-ELOQUENT\cursoeloquent9\app/Listeners/NotifyNewPostCreated.php] created successfully.  
+```
+
+```php
+class EventServiceProvider extends ServiceProvider
+{
+    protected $listen = [
+        Registered::class => [
+            SendEmailVerificationNotification::class,
+        ],
+        PostCreated::class => [
+            NotifyNewPostCreated::class
+        ]
+    ];
+```
+
+```
+$ php artisan make:mail MailNewProsCreated
+
+   INFO  Mail [C:\Users\josem\Documents\workspaces\especializati-LARAVEL-ELOQUENT\cursoeloquent9\app/Mail/MailNewProsCreated.php] created successfully.  
+```
+
+```php
+class MailNewProsCreated extends Mailable
+{
+    public function content()
+    {
+        return new Content(view: 'emails.new-post-created');
+    }
+```
 
 [Voltar ao Índice](#indice)
 

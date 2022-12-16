@@ -192,6 +192,16 @@ Route::get('/observer', function () {
     $post = Post::create([
         // user_id' => $user->id, // vai pegar do observer
         'title' => 'Um novo titulo ' . Str::random(10),
+        'body' => 'Texto... ' . Str::random(100),
+        'date' => now(),
+    ]);
+    return $post;
+});
+
+Route::get('/events', function () {
+    $post = Post::create([
+        'user_id' => 4,
+        'title' => 'Um novo titulo ' . Str::random(10),
         'body' => 'Texto... ' .Str::random(100),
         'date' => now(),
     ]);

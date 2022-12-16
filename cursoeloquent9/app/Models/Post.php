@@ -4,6 +4,7 @@ namespace App\Models;
 
 
 use App\Accessors\DefaultAccessors;
+use App\Events\PostCreated;
 use App\Scopes\YearScope;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
@@ -21,6 +22,11 @@ class Post extends Model
     protected $casts = [ // como ele retorna dobanco de dados
         'date' => 'datetime:d/m/Y',
         'active' => 'boolean'
+    ];
+
+    protected $dispatchesEvents = [
+        'created' => PostCreated::class,
+
     ];
 
     protected static function booted()
