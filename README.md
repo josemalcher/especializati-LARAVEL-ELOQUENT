@@ -620,7 +620,33 @@ Route::get('/acessor', function () {
 
 ## <a name="parte25">25 - 01 - Laravel Eloquent - Criando um Accessor</a>
 
+```php
+<?php
 
+namespace App\Accessors;
+
+trait DefaultAccessors
+{
+    public function getTitleAttribute($value)
+    {
+        return strtoupper($value);
+    }
+
+    public function getTitleAndBOdyAttribute($value)
+    {
+        return $this->title . ' - ' . $this->body;
+    }
+}
+
+```
+
+```php
+use App\Accessors\DefaultAccessors;
+class Post extends Model
+{
+    use HasFactory, SoftDeletes, DefaultAccessors;
+
+```
 
 [Voltar ao Índice](#indice)
 
@@ -629,7 +655,22 @@ Route::get('/acessor', function () {
 
 ## <a name="parte26">26 - 02 - Laravel Eloquent - Casting</a>
 
+- https://laravel.com/docs/master/eloquent-mutators#attribute-casting
 
+```php
+class Post extends Model
+{
+    use HasFactory, SoftDeletes, DefaultAccessors;
+
+    protected $fillable = ['user_id', 'title', 'body', 'date'];
+
+    protected $casts = [
+        'date' => 'date',
+        'active' => 'boolean'
+    ];
+    
+
+```
 
 [Voltar ao Índice](#indice)
 

@@ -140,6 +140,6 @@ Route::get('/delete2', function () {
 Route::get('/acessor', function () {
 
     $post = Post::first();
-    return $post->title_and_body;
+    return $post;
 
 });

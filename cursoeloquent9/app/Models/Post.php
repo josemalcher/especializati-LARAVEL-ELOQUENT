@@ -4,6 +4,7 @@ namespace App\Models;
 
 
 use App\Accessors\DefaultAccessors;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -14,6 +15,10 @@ class Post extends Model
 
     protected $fillable = ['user_id', 'title', 'body', 'date'];
 
+    protected $casts = [
+        'date' => 'date',
+        'active' => 'boolean'
+    ];
     /*
     protected $table = 'postagens'; // outro nome da tabela
     protected $primaryKey = 'id_postagens'; // outro nome do id
@@ -44,4 +49,9 @@ class Post extends Model
     {
         return $this->title . ' - ' . $this->body;
     }*/
+
+//    public function getDateAttribute($value)
+//    {
+//        return Carbon::make($value)->format('d/m/Y');
+//    }
 }
