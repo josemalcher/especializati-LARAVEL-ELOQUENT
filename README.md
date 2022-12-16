@@ -432,7 +432,13 @@ Route::get('/pagination', function (User $user) {
 
 ## <a name="parte18">18 - 05 - Laravel Eloquent - Ordenação</a>
 
+```php
+Route::get('/orderby', function () {
+    $users = User::orderBy('id', 'DESC')->get();
 
+    return $users;
+});
+```
 
 [Voltar ao Índice](#indice)
 

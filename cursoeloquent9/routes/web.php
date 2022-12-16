@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/orderby', function () {
+    $users = User::orderBy('id', 'DESC')->get();
+
+    return $users;
+});
+
 Route::get('/pagination', function (User $user) {
     $filter = request('filter');
     $paginate = request('paginate', 10);
