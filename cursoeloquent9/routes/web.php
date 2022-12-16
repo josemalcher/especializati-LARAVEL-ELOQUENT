@@ -16,6 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/update', function (Request $request) {
+
+    if (!$post = Post::find(1))
+        return 'Post not Found';
+
+//    $post->title = 'Titulo atualizado';
+//    $post->save();
+    $post->update($request->all());
+
+    dd(Post::find(1));
+});
+
 Route::get('/orderby', function () {
     $users = User::orderBy('id', 'DESC')->get();
 

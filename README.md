@@ -498,7 +498,19 @@ Route::get('/insert2', function (Post $post, Request $request) {
 
 ## <a name="parte21">21 - 08 - Laravel Eloquent - Atualizar Registro no Banco</a>
 
+```php
+Route::get('/update', function (Request $request) {
 
+    if (!$post = Post::find(1))
+        return 'Post not Found';
+
+//    $post->title = 'Titulo atualizado';
+//    $post->save();
+    $post->update($request->all());
+
+    dd(Post::find(1));
+});
+```
 
 [Voltar ao Índice](#indice)
 
