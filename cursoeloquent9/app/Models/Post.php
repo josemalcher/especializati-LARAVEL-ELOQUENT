@@ -9,6 +9,7 @@ class Post extends Model
 {
     use HasFactory;
 
+    /*
     protected $table = 'postagens'; // outro nome da tabela
     protected $primaryKey = 'id_postagens'; // outro nome do id
     protected $keyType = 'string'; // tipo do primarykey
@@ -27,5 +28,6 @@ class Post extends Model
     protected $attributes = [
         'active' => true,
     ];
+    */
 
 }

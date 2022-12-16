@@ -353,7 +353,30 @@ class Post extends Model
 
 ## <a name="parte15">15 - 02 - Opções de Consultas no Eloquent do Laravel</a>
 
+```
+$ php artisan tinker
+Psy Shell v0.11.9 (PHP 8.0.16 — cli) by Justin Hileman
 
+> \App\Models\User::factory()->count(100)->create();               
+```
+
+```php
+Route::get('/select', function () {
+    //$users = User::all();
+    // $users = User::where('id', '>=', 10)->get();
+    // $user = User::where('id', 10)->first();
+    // $user = User::first();
+    // $user = User::find(10);
+
+    //$user = User::findOrFail(request('id')); // comum em uso em API
+    // $user = User::where('name', request('name'))->firstOrFail(); // comum em uso em API
+    $user = User::firstWhere('name', request('name')); // comum em uso em API
+
+
+
+    dd($user);
+});
+```
 
 [Voltar ao Índice](#indice)
 
