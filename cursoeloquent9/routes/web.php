@@ -111,3 +111,18 @@ Route::get('/insert2', function (Post $post, Request $request) {
 
     return $post;
 });
+
+Route::get('/delete', function () {
+
+    // Post::destroy([1,2]);
+    // Post::destroy(1,2,3);
+    // Post::destroy(Post::get();
+
+    $post = Post::where('id', 7)->first();
+
+    if (!$post) {
+        return 'POST NOT FOUND';
+    }
+    dd($post->delete());
+
+});

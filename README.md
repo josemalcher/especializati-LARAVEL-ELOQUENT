@@ -519,7 +519,22 @@ Route::get('/update', function (Request $request) {
 
 ## <a name="parte22">22 - 09 - Laravel Eloquent - Deletar Registro no Banco</a>
 
+```php
+Route::get('/delete', function () {
 
+    // Post::destroy([1,2]);
+    // Post::destroy(1,2,3);
+    // Post::destroy(Post::get();
+
+    $post = Post::where('id', 7)->first();
+
+    if (!$post) {
+        return 'POST NOT FOUND';
+    }
+    dd($post->delete());
+
+});
+```
 
 [Voltar ao Índice](#indice)
 
