@@ -773,7 +773,40 @@ Route::get('/local-scope', function () {
 
 ## <a name="parte30">30 - 02 - Laravel Eloquent - Anonymous Global Scopes</a>
 
+```php
+class Post extends Model
+{
+    protected static function booted()
+    {
+        static::addGlobalScope('year', function (Builder $builder) {
+            $builder->whereYear('date', Carbon::now()->year);
+        });
+    }
 
+```
+
+```php
+
+Route::get('/anonumous-global-scope', function () {
+
+    // $post = Post::get();
+
+    /*
+    Query
+        select
+          *
+        from
+          `posts`
+        where
+          `posts`.`deleted_at` is null
+          and year(`date`) = 2022
+    */
+
+    $post = Post::withoutGlobalscope('year')->get();
+
+    return $post;
+});
+```
 
 [Voltar ao Índice](#indice)
 

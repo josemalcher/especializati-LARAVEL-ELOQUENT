@@ -166,3 +166,23 @@ Route::get('/local-scope', function () {
     return $post;
 });
 
+Route::get('/anonumous-global-scope', function () {
+
+    // $post = Post::get();
+
+    /*
+    Query
+        select
+          *
+        from
+          `posts`
+        where
+          `posts`.`deleted_at` is null
+          and year(`date`) = 2022
+    */
+
+    $post = Post::withoutGlobalscope('year')->get();
+
+    return $post;
+});
+
