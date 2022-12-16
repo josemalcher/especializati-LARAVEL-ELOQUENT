@@ -385,7 +385,27 @@ Route::get('/select', function () {
 
 ## <a name="parte16">16 - 03 - Laravel Eloquent - Filtrar Registros</a>
 
+```php
+Route::get('/where', function (User $user) {
+    //$user = $user->where('email', '=', 'zgoodwin@example.org')->first();
+    // $user = $user->where('email', 'zgoodwin@example.org')->first(); // resultado é o mesmo do acima
 
+    $filter = 'jose';
+    // $users = $user->where('name', 'LIKE', "%$filter%")->get();
+    // $users = $user->where('name', 'LIKE', "%$filter%")->orWhere('name', 'Barrett Sipes')->get();
+    // ->toSql(); select * from `users` where `name` LIKE ? or `name` = ?
+
+    $users = $user->where('name', 'LIKE', "%$filter%")
+        ->orWhere(function ($query) use ($filter){
+            $query->where('name', '<>', 'Jose');
+            $query->where('name', '=', $filter);
+        })
+        ->toSql();
+    // select * from `users` where `name` LIKE ? or (`name` <> ? and `name` = ?)
+
+    dd($users);
+});
+```
 
 [Voltar ao Índice](#indice)
 
