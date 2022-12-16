@@ -136,3 +136,10 @@ Route::get('/delete2', function () {
     return $posts;
 
 });
+
+Route::get('/acessor', function () {
+
+    $post = Post::first();
+    return $post->title_and_body;
+
+});

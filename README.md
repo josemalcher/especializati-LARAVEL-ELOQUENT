@@ -584,7 +584,34 @@ Route::get('/delete2', function () {
 
 ## <a name="parte24">24 - 04 - Accessors & Mutators</a>
 
+```php
+<?php
 
+namespace App\Accessors;
+
+trait DefaultAccessors
+{
+    public function getTitleAttribute($value)
+    {
+        return strtoupper($value);
+    }
+
+    public function getTitleAndBOdyAttribute($value)
+    {
+        return $this->title . ' - ' . $this->body;
+    }
+}
+
+```
+
+```php
+Route::get('/acessor', function () {
+
+    $post = Post::first();
+    return $post->title_and_body;
+
+});
+```
 
 [Voltar ao Índice](#indice)
 
