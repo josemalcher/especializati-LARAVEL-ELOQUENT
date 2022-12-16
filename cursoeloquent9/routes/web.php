@@ -157,3 +157,12 @@ Route::get('/mutators', function () {
     return $post;
 });
 
+Route::get('/local-scope', function () {
+
+    // $post = Post::LastWeek()->get();
+    // $post = Post::Today()->get();
+    $post = Post::Between('2022-12-01', '2022-12-16')->get();
+
+    return $post;
+});
+

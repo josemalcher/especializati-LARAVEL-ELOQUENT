@@ -728,7 +728,43 @@ Route::get('/mutators', function () {
 
 ## <a name="parte29">29 - 01 - Laravel Eloquent - Local Scope</a>
 
+```php
+class Post extends Model
+{
+    
+    public function scopeLastWeek($query)
+    {
+        return $this
+            ->whereDate('date', '>=', now()->subDays(4))
+            ->whereDate('date', '<=', now()->subDays(1));
+    }
 
+    public function scopeToday($query)
+    {
+        return $this
+            ->whereDate('date', now());
+
+    }
+
+    public function scopeBetween($query, $firtdate, $lastDate)
+    {
+
+        return $this
+            ->whereDate('date', '>=', Carbon::make($firtdate)->format('Y-m-d'))
+            ->whereDate('date', '<=', Carbon::make($lastDate)->format('Y-m-d'));
+    }
+```
+
+```php
+Route::get('/local-scope', function () {
+
+    // $post = Post::LastWeek()->get();
+    // $post = Post::Today()->get();
+    $post = Post::Between('2022-12-01', '2022-12-16')->get();
+
+    return $post;
+});
+```
 
 [Voltar ao Índice](#indice)
 
