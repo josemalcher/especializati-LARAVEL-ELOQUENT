@@ -815,7 +815,58 @@ Route::get('/anonumous-global-scope', function () {
 
 ## <a name="parte31">31 - 03 - Laravel Eloquent - Global Scopes</a>
 
+```php
+namespace App\Scopes;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Scope;
+
+class YearScope implements Scope
+{
+    public function apply(Builder $builder, Model $model)
+    {
+        $builder->whereYear('date', Carbon::now()->year);
+    }
+
+}
+```
+
+```php
+class Post extends Model
+{
+    protected static function booted()
+    {
+//        static::addGlobalScope('year', function (Builder $builder) {
+//            $builder->whereYear('date', Carbon::now()->year);
+//        });
+        static::addGlobalScope(new YearScope);
+    }
+```
+
+```php
+Route::get('/anonumous-global-scope', function () {
+
+    //$post = Post::get();
+
+    /*
+    Query
+        select
+          *
+        from
+          `posts`
+        where
+          `posts`.`deleted_at` is null
+          and year(`date`) = 2022
+    */
+
+    // $post = Post::withoutGlobalscope('year')->get();
+    $post = Post::withoutGlobalscope(\App\Scopes\YearScope::class)->get();
+
+    return $post;
+});
+```
 
 [Voltar ao Índice](#indice)
 

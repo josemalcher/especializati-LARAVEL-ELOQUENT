@@ -168,7 +168,7 @@ Route::get('/local-scope', function () {
 
 Route::get('/anonumous-global-scope', function () {
 
-    // $post = Post::get();
+    //$post = Post::get();
 
     /*
     Query
@@ -181,7 +181,8 @@ Route::get('/anonumous-global-scope', function () {
           and year(`date`) = 2022
     */
 
-    $post = Post::withoutGlobalscope('year')->get();
+    // $post = Post::withoutGlobalscope('year')->get();
+    $post = Post::withoutGlobalscope(\App\Scopes\YearScope::class)->get();
 
     return $post;
 });
