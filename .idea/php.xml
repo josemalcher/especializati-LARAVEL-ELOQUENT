@@ -122,6 +122,11 @@
       <path value="$PROJECT_DIR$/cursoeloquent9/vendor/laravel/telescope" />
       <path value="$PROJECT_DIR$/cursoeloquent9/vendor/maximebf/debugbar" />
       <path value="$PROJECT_DIR$/cursoeloquent9/vendor/barryvdh/laravel-debugbar" />
+      <path value="$PROJECT_DIR$/cursoeloquent9/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/cursoeloquent9/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/cursoeloquent9/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/cursoeloquent9/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/cursoeloquent9/vendor/doctrine/cache" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />

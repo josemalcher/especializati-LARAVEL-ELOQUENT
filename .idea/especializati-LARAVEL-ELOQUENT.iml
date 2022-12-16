@@ -119,6 +119,11 @@
       <excludeFolder url="file://$MODULE_DIR$/cursoeloquent9/vendor/laravel/telescope" />
       <excludeFolder url="file://$MODULE_DIR$/cursoeloquent9/vendor/maximebf/debugbar" />
       <excludeFolder url="file://$MODULE_DIR$/cursoeloquent9/vendor/barryvdh/laravel-debugbar" />
+      <excludeFolder url="file://$MODULE_DIR$/cursoeloquent9/vendor/psr/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/cursoeloquent9/vendor/doctrine/deprecations" />
+      <excludeFolder url="file://$MODULE_DIR$/cursoeloquent9/vendor/doctrine/event-manager" />
+      <excludeFolder url="file://$MODULE_DIR$/cursoeloquent9/vendor/doctrine/dbal" />
+      <excludeFolder url="file://$MODULE_DIR$/cursoeloquent9/vendor/doctrine/cache" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
