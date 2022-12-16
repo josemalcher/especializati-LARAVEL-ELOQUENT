@@ -468,7 +468,28 @@ Route::get('/insert', function (Post $post) {
 
 ## <a name="parte20">20 - 07 - Laravel Eloquent - Mass Assignment</a>
 
+```php
+/*
+Route::get('/insert2', function (Post $post) {
+ // MODEL POST: protected $fillable = ['user_id', 'title', 'body', 'date'];
+    $post = Post::create([
+        'user_id' => '1',
+        'title' => 'Post ' . \Illuminate\Support\Str::random(10),
+        'body' => 'COnteudo do post teste',
+        'date' =>date('Y-m-d'),
+    ]);
 
+    return $post;
+})
+*/
+
+Route::get('/insert2', function (Post $post, Request $request) {
+    /* MODEL POST: protected $fillable = ['user_id', 'title', 'body', 'date']; */
+    $post = Post::create($request->all());
+
+    return $post;
+});
+```
 
 [Voltar ao Índice](#indice)
 
