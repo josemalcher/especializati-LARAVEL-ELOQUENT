@@ -395,7 +395,7 @@ Route::get('/where', function (User $user) {
     // $users = $user->where('name', 'LIKE', "%$filter%")->orWhere('name', 'Barrett Sipes')->get();
     // ->toSql(); select * from `users` where `name` LIKE ? or `name` = ?
 
-    $users = $user->where('name', 'LIKE', "%$filter%")
+        $users = $user->where('name', 'LIKE', "%{$filter}%")
         ->orWhere(function ($query) use ($filter){
             $query->where('name', '<>', 'Jose');
             $query->where('name', '=', $filter);
@@ -414,7 +414,16 @@ Route::get('/where', function (User $user) {
 
 ## <a name="parte17">17 - 04 - Laravel Eloquent - Paginação</a>
 
+```php
+Route::get('/pagination', function (User $user) {
+    $filter = request('filter');
+    $paginate = request('paginate', 10);
 
+    $users = $user->where('name', 'LIKE', "%{$filter}%")->paginate($paginate);
+    // http://localhost:8000/pagination?page=2&filter=a&paginate=50
+    return $users;
+});
+```
 
 [Voltar ao Índice](#indice)
 
