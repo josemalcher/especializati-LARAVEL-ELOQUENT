@@ -15,7 +15,8 @@ class Post extends Model
 {
     use HasFactory, SoftDeletes, DefaultAccessors;
 
-    protected $fillable = ['user_id', 'title', 'body', 'date'];
+    // protected $fillable = ['user_id', 'title', 'body', 'date']; // sem observer
+    protected $fillable = ['title', 'body', 'date'];
 
     protected $casts = [ // como ele retorna dobanco de dados
         'date' => 'datetime:d/m/Y',

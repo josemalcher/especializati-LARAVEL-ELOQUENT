@@ -875,7 +875,66 @@ Route::get('/anonumous-global-scope', function () {
 
 ## <a name="parte32">32 - 04 - Laravel Eloquent - Observers</a>
 
+```
+$ php artisan make:observer PostObserver --model=Post
 
+   INFO  Observer [C:\Users\josem\Documents\workspaces\especializati-LARAVEL-ELOQUENT\cursoeloquent9\app/Observers/PostObserver.php] created successfully.  
+
+
+```
+
+```php
+class PostObserver
+{
+    /**
+     * Handle the Post "creating" event.
+     *
+     * @param  \App\Models\Post  $post
+     * @return void
+     */
+    public function creating(Post $post)
+    {
+        $post->user_id = '22'; // auth()->user()->id
+    }
+```
+
+```php
+class Post extends Model
+{
+    use HasFactory, SoftDeletes, DefaultAccessors;
+
+    // protected $fillable = ['user_id', 'title', 'body', 'date']; // sem observer
+    protected $fillable = ['title', 'body', 'date'];
+
+```
+
+```php
+class EventServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any events for your application.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Post::observe(PostObserver::class);
+
+    }
+```
+
+```php
+Route::get('/observer', function () {
+    // $user = User::firts();
+    $post = Post::create([
+        // user_id' => $user->id, // vai pegar do observer
+        'title' => 'Um novo titulo ' . Str::random(10),
+        'body' => 'Texto... ' .Str::random(100),
+        'date' => now(),
+    ]);
+    return $post;
+});
+```
 
 [Voltar ao Índice](#indice)
 
