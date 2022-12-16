@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -64,4 +65,16 @@ Route::get('/select', function () {
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/insert', function (Post $post) {
+    // FORMA MANUAL
+    $post->user_id = 1;
+    $post->title = 'Post ' . \Illuminate\Support\Str::random(10);
+    $post->body = 'COnteudo do post teste';
+    $post->date = date('Y-m-d');
+    $post->save();
+
+    $posts = Post::get();
+    return $posts;
 });

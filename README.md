@@ -447,7 +447,19 @@ Route::get('/orderby', function () {
 
 ## <a name="parte19">19 - 06 - Laravel Eloquent - Inserir Registro no Banco</a>
 
+```php
+Route::get('/insert', function (Post $post) {
+    // FORMA MANUAL
+    $post->user_id = 1;
+    $post->title = 'Post ' . \Illuminate\Support\Str::random(10);
+    $post->body = 'COnteudo do post teste';
+    $post->date = date('Y-m-d');
+    $post->save();
 
+    $posts = Post::get();
+    return $posts;
+});
+```
 
 [Voltar ao Índice](#indice)
 
