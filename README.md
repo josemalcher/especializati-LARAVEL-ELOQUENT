@@ -679,7 +679,38 @@ class Post extends Model
 
 ## <a name="parte27">27 - 03 - Laravel Eloquent - Criando um Mutator</a>
 
+```php
+class Post extends Model
+{
+    use HasFactory, SoftDeletes, DefaultAccessors;
 
+    protected $fillable = ['user_id', 'title', 'body', 'date'];
+
+protected $casts = [ // como ele retorna dobanco de dados
+        'date' => 'datetime:d/m/Y',
+        'active' => 'boolean'
+    ];
+    
+    public function setDateAttribute($value) // alterar o valor antes de inserir no bando de dados
+    {
+        $this->attributes['date'] = Carbon::make($value)->format('Y-m-d');
+    }
+```
+
+```php
+Route::get('/mutators', function () {
+    $user = User::first();
+    $post = Post::create([
+        'user_id' => $user->id,
+        'title' => 'Um novo titulo ' . Str::random(10),
+        'body' => Str::random(100),
+        'date' => now(),
+    ]);
+    return $post;
+});
+
+
+```
 
 [Voltar ao Índice](#indice)
 

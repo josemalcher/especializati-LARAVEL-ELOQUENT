@@ -4,6 +4,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,7 +84,7 @@ Route::get('/', function () {
 Route::get('/insert', function (Post $post) {
     // FORMA MANUAL
     $post->user_id = 1;
-    $post->title = 'Post ' . \Illuminate\Support\Str::random(10);
+    $post->title = 'Post ' . Str::random(10);
     $post->body = 'COnteudo do post teste';
     $post->date = date('Y-m-d');
     $post->save();
@@ -143,3 +144,16 @@ Route::get('/acessor', function () {
     return $post;
 
 });
+
+Route::get('/mutators', function () {
+    $user = User::first();
+    $post = Post::create([
+        'user_id' => $user->id,
+        'title' => 'Um novo titulo ' . Str::random(10),
+        'body' => Str::random(100),
+        'date' => now(),
+
+    ]);
+    return $post;
+});
+
