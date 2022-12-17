@@ -24,10 +24,9 @@ class Post extends Model
         'active' => 'boolean'
     ];
 
-    protected $dispatchesEvents = [
+/*    protected $dispatchesEvents = [
         'created' => PostCreated::class,
-
-    ];
+    ];*/
 
     protected static function booted()
     {

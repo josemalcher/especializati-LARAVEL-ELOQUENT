@@ -1008,6 +1008,116 @@ class MailNewProsCreated extends Mailable
 
 ## <a name="parte35">35 - 01 - Laravel Factories e Seeders</a>
 
+```
+$ php artisan make:factory PostFactory --model=Post
+
+   INFO  Factory [C:\Users\josem\Documents\workspaces\especializati-LARAVEL-ELOQUENT\cursoeloquent9\database/factories/PostFactory.php] created successfully.
+```
+
+```php
+class PostFactory extends Factory
+{
+    public function definition()
+    {
+        return [
+            'user_id' => User::factory(),
+            'title' => $this->faker->unique()->name(),
+            'body' => $this->faker->sentence(20),
+            'date' => now(),
+        ];
+    }
+```
+
+```
+$ php artisan tinker
+Psy Shell v0.11.9 (PHP 8.0.16 — cli) by Justin Hileman
+
+> App\Models\Post::factory()->create();                                                                                                                                       
+= App\Models\Post {#3890
+    user_id: "22",
+    title: "Lela Huels III",
+    body: "Ut dignissimos fugit incidunt error expedita voluptas unde sunt consequuntur id error ut corrupti fugit temporibus mollitia rerum sed laudantium fuga.",
+    date: "2022-12-17",
+    updated_at: "2022-12-17 00:03:39",
+    created_at: "2022-12-17 00:03:39",
+    id: 17,
+  }
+
+> App\Models\Post::factory()->count(10)->create();                   
+```
+
+```
+$ php artisan make:seeder PostTableSeeder
+
+   INFO  Seeder [C:\Users\josem\Documents\workspaces\especializati-LARAVEL-ELOQUENT\cursoeloquent9\database/seeders/PostTableSeeder.php] created successfully.
+```
+
+```php
+class PostSeeder extends Seeder
+{
+    public function run()
+    {
+        Post::factory()->create();
+    }
+```
+
+```php
+class DatabaseSeeder extends Seeder
+{
+    public function run()
+    {
+        // \App\Models\User::factory(10)->create();
+
+        // \App\Models\User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+        $this->call([
+            PostSeeder::class
+        ]);
+    }
+```
+
+```
+$ php artisan db:seed
+
+   INFO  Seeding database.
+
+  Database\Seeders\PostSeeder ....... RUNNING  
+  Database\Seeders\PostSeeder ....... 120.51 ms DONE  
+
+
+```
+
+```
+$ php artisan make:seeder UserSeeder
+
+   INFO  Seeder [C:\Users\josem\Documents\workspaces\especializati-LARAVEL-ELOQUENT\cursoeloquent9\database/seeders/UserSeeder.php] created successfully.
+```
+
+```php
+class UserSeeder extends Seeder
+{
+    public function run()
+    {
+        User::create([
+            'name' => 'Jose Malcher Jr',
+            'email'=> 'mail@mail.com',
+            'password' => bcrypt('12345678')
+        ]);
+    }
+```
+
+```
+$ php artisan db:seed --class=UserSeeder
+
+   INFO  Seeding database.
+
+-----
+
+$ php artisan migrate --seed
+
+```
 
 
 [Voltar ao Índice](#indice)
